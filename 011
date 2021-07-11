@@ -1,0 +1,39 @@
+import random
+
+
+matrix=[[0 for _ in range(14)] for _ in range(18)] # матрица заполняется нулями
+
+for i in range(11, 18): # матрица рандомно заполняется единицами
+    for j in range(len(matrix[i])):
+        matrix[i][j]=random.randrange(0, 2)
+
+
+for i in matrix: # вывод матрицы
+    for j in i:
+        print(j, end='')
+    print('')
+
+
+
+
+figure=[ [0, 0, 0], 
+         [2, 2, 2], 
+         [0, 2, 0] ]  # фигура
+
+x=0 #i
+y=3 #j
+
+flag=True
+
+while flag==True: # пока фигура не врезалась в единицы
+    for i in range(len(figure)):
+        for j in range(len(figure[i])):
+            
+            if figure[i][j]==0: 
+                continue
+            else:
+                if matrix[x+i+1][y+j]==0: # если на клетку ниже нет единицы 
+                    continue
+                else:
+                    flag=False
+    x+=1
